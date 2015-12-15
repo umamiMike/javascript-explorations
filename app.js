@@ -1,39 +1,22 @@
-// var a = "Hello World";
-//
-// var b = {
-//   self: this,
-//   balls: function(){
-//     console.log("I Have Balls");
-//   },
-//   console.log('Called b!')
-// }
+myStorage = localStorage;
+myStorage.clear();
+var Man = function(name,dob) {
+  this.name = name;
+  this.dob = dob;
+};
 
-//javascript
-  //creation phase
-    //setup memory space for variables and functions (hoisting)
-    //before your code has been executed...memory space is allocated
-    //variable space exists and is set to undefined
+  Man.prototype.validateName = function(){
+  console.log(this.name + " Is a total badass.");
+  return this.name;
+};
 
-
-var digit_name = function () {
-  var names = ['zero','one'];
-
-  return function (n){
-    return names[n];
+  Man.prototype.sayMyBirthday = function(){
+    console.log("I was born on " + this.dob);
+    return this.dob;
   };
-}();
+  Man.prototype.save = function(){
 
-//4 ways to make an object
-//call another power constructer
-//Augment the object with privelaged methods
+      myStorage.setItem(this.name,JSON.stringify(this));
+  }
 
-
-function myPowerConstructor(x){
-  var that = otherMaker(x);
-  var secret = f(x);
-  that.priv = function (){
-    //some private code
-  };
-  return that;
-
-}
+bob = new Man ("Bobby","June 3rd");
